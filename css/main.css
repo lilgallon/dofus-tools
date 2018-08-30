@@ -16,16 +16,26 @@
        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     /* scroll */
-    max-height: 100px;
+    max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 .ui-autocomplete > li {
   padding: 3px 20px;
 }
+
 .ui-autocomplete > li.ui-state-focus {
   background-color: #DDD;
 }
+
 .ui-helper-hidden-accessible {
   display: none;
+}
+
+.ui-autocomplete-category {
+  font-weight: bold;
+  padding: .4em .4em;
+  margin: .8em 0 .2em;
+  line-height: 1.5;
 }
