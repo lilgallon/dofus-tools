@@ -66,6 +66,14 @@ body {
   line-height: 40px;
 }
 
+.sidebar-nav li.selected{
+  background: linear-gradient(to right, #ead24c 4px, #000000 1px);
+}
+
+.sidebar-nav li:not(.selected):hover{
+  background: linear-gradient(to right, #2e2805 4px, #000000 1px);
+}
+
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
