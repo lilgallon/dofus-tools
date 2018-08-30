@@ -20,21 +20,31 @@
     <link rel="image_src" href="images/dofus_forgemagie-logo.png">
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome-all.min.css">
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+
+    <!-- JQuery UI -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
 
     <!-- include javascript -->
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
-    <form>
-        <input type="text" id="rune_searching">
-    </form>
+    <div class="container">
+        <div class="form-group">
+            <label> Rune</label>
+            <input id="rune_searching" class="form-control" placeholder="Sélectionnez la rune">
+        </div>
+    </div>
 </body>
 </html>
