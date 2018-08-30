@@ -135,10 +135,24 @@ $(document).ready(function() {
         appendTo : "#container-rune-searching"
     });
 
-    // Menu Toggle Script
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+    // Sidebar toggler
+    var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = true;
+
+    trigger.click(function () {
+      hamburger_toggle();      
     });
+
+    function hamburger_toggle() {
+      if (isClosed == true) {
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+      $('#wrapper').toggleClass('toggled');
+  }
 
 });

@@ -27,6 +27,7 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/main.css">
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/hamburger.css" rel="stylesheet">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome-all.min.css">
@@ -52,30 +53,18 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    <a href="/">
+                        Outils pour dofus
                     </a>
                 </li>
-                <li>
-                    <a href="#">Dashboard</a>
+                <li class="active">
+                    <a href="forgemagie.html">Forgemagie</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="brisage.html">Brisage d'items</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="contact.html">Contact</a>
                 </li>
             </ul>
         </div>
@@ -83,23 +72,29 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <h1>Simple Sidebar</h1>
-                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            <!-- Sidebar toggle button -->
+            <button type="button" class="hamburger is-open" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h1>TODO</h1>
+                        <p>TODO</p>
+                        <p>TODO <code>#laul</code>.</p>
+
+                        <div class="form-group">
+                            <input id="rune-searching" class="form-control" placeholder="Sélectionnez la rune">
+                            <div id="container-rune-searching"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
-
-    
-    <div class="container">
-        <div class="form-group">
-            <input id="rune-searching" class="form-control" placeholder="Sélectionnez la rune">
-            <div id="container-rune-searching"></div>
-        </div>
-    </div>
 
     </div>
     <!-- /#wrapper -->
