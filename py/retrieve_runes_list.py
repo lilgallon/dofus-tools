@@ -15,6 +15,6 @@ for rune in runes:
 
     line = '{ label: "' + rune_name + \
            '", category: "Runes de type ' + category + \
-           '", icon: "/images/runes/' + category + "/" + os.path.basename(rune) + '"},'
+           '", icon: "images/runes/' + category + "/" + os.path.basename(rune) + '"},'
 
     print(line)
