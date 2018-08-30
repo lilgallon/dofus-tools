@@ -1,5 +1,10 @@
 /* Autocomplete style */
 
+#container-rune-searching{
+  display: block;
+  position: relative;
+}
+
 .ui-autocomplete {
     position: absolute;
     z-index: 1000;

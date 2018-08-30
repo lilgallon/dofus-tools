@@ -131,9 +131,16 @@ $(document).ready(function() {
     });
 
     // https://stackoverflow.com/questions/28285813/style-jquery-autocomplete-in-a-bootstrap-input-field
-    $("#rune_searching").catcomplete({
+    $("#rune-searching").catcomplete({
         delay: 0,
-        source : runes
+        source : runes,
+        appendTo : "#container-rune-searching"
+    });
+
+    // Menu Toggle Script
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
     });
 
 });
