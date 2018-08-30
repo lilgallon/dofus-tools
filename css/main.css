@@ -15,6 +15,10 @@
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    /* scroll */
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .ui-autocomplete > li {
   padding: 3px 20px;
