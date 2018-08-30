@@ -122,11 +122,9 @@ $(document).ready(function() {
             });
         },
         _renderItemData(ul, item){
-            return $("<li>")
-                .attr("data-value", item.label)
-                .append("<img src=\"" + item.icon + "\"></img>")
-                .append(item.label)
-                .appendTo(ul);
+            var result = this._super(ul, item);
+            result.html("<img src=\"" + item.icon + "\"></img>" + item.label)
+            return result;
         }
     });
 
