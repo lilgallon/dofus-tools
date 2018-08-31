@@ -99,13 +99,14 @@ var runes = [
 
 $(document).ready(function() {
 
-    // Categories https://jqueryui.com/autocomplete/#categories
-    // We create a new widget that inherits of ui.autocomplete that is called catcomplet
-    $.widget( "custom.catcomplete", $.ui.autocomplete, {
-        _create: function() {
+    /* start Autocomplete inputs */
+    // It creates a new widget that inherits of ui.autocomplete that is called catcomplet
+    $.widget("custom.catcomplete", $.ui.autocomplete, {
+        _create: function(){
             this._super();
-            this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+            this.widget().menu("option", "items", "> :not(.ui-autocomplete-category)");
         },
+        // It changes the way the menu is generated to add categories
         _renderMenu: function( ul, items ) {
             var self = this, currentCategory = "";
             $.each( items, function( index, item ) {
@@ -120,6 +121,7 @@ $(document).ready(function() {
                 }
             });
         },
+        // It changes the way items are written to add the icon
         _renderItemData(ul, item){
             var result = this._super(ul, item);
             result.html("<img src=\"" + item.icon + "\"></img>" + item.label)
@@ -127,31 +129,33 @@ $(document).ready(function() {
         }
     });
 
-    // https://stackoverflow.com/questions/28285813/style-jquery-autocomplete-in-a-bootstrap-input-field
+    // Position fix : https://stackoverflow.com/questions/28285813/style-jquery-autocomplete-in-a-bootstrap-input-field
+    // It add the custom autocomplete widget (catcomplete) to the container having the id "rune-searching"
     $("#rune-searching").catcomplete({
         delay: 0,
         source : runes,
         appendTo : "#container-rune-searching"
     });
+    /* end Autocomplete inputs */
 
-    // Sidebar toggler
-    var trigger = $('.hamburger'), overlay = $('.overlay'), isClosed = true;
+    /* start Sidebar toggler */
+    var trigger = $('.hamburger'), isClosed = true;
 
     trigger.click(function () {
-      hamburger_toggle();      
+        hamburger_toggle();      
     });
 
     function hamburger_toggle() {
-      if (isClosed == true) {
-        trigger.removeClass('is-open');
-        trigger.addClass('is-closed');
-        isClosed = false;
-      } else {
-        trigger.removeClass('is-closed');
-        trigger.addClass('is-open');
-        isClosed = true;
-      }
-      $('#wrapper').toggleClass('toggled');
-  }
-
+        if (isClosed == true) {
+            trigger.removeClass('is-open');
+            trigger.addClass('is-closed');
+            isClosed = false;
+        } else {
+            trigger.removeClass('is-closed');
+            trigger.addClass('is-open');
+            isClosed = true;
+        }
+        $('#wrapper').toggleClass('toggled');
+    }
+  /* end Sidebar toggler */
 });
