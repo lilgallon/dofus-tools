@@ -3,20 +3,36 @@
 import os
 from pathlib import Path
 
-directory = "images/runes"
-runes = list(Path(directory).rglob("rune_*.png"))
+def main():
+    directory = "images/runes"
+    runes = list(Path(directory).rglob("Rune*.png"))
 
-for rune in runes:
-    rune_name = os.path.basename(rune).replace("_", " ").replace(".png", "")
-    
-    category = "simple"
-    if "Rune Pa" in rune_name:
-        category = "Pa"
-    elif "Rune Ra" in rune_name:
-        category = "Ra"
+    for index, rune in enumerate(runes):
+        rune_name = os.path.basename(rune).replace("_", " ").replace(".png", "")
+        rune_weight = rune_name.split("(")[1].split(")")[0]
+        rune_name = rreplace(rune_name.split("(")[0], " ", "", 1)
 
-    line = '{ label: "' + rune_name + \
-           '", category: "Runes de type ' + category + \
-           '", icon: "images/runes/' + os.path.basename(rune) + '"},'
+        category = "simple"
+        if "Rune Pa" in rune_name:
+            category = "Pa"
+        elif "Rune Ra" in rune_name:
+            category = "Ra"
 
-    print(line)
+        line = '{ label: "' + rune_name + \
+            '", category: "Runes de type ' + category + \
+            '", icon: "images/runes/' + os.path.basename(rune) + \
+            '", weight: "' + rune_weight + '"}'
+
+        if len(runes) != index + 1:
+            line += ","
+
+        print(line)
+
+
+def rreplace(s, old, new, occurrence):
+    li = s.rsplit(old, occurrence)
+    return new.join(li)
+
+
+if __name__ == "__main__":
+    main()
