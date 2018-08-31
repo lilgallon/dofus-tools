@@ -10,7 +10,8 @@ $(document).ready(function() {
 
     // Rune auto complete list
     createRuneCompleteWidget();
-    attachRuneCompleteWidget($("#rune-searching"), "#container-rune-searching");
+    attachRuneCompleteWidget($("#rune-removed"));
+    attachRuneCompleteWidget($("#rune-added"));
 
     // Sidebar toggler
     addSideBarTrigger($(".hamburger"))

@@ -39,22 +39,30 @@ function createRuneCompleteWidget(){
 }
 
 /**
- * It adds the rune autocomplete widget to the specified {container}. Should be an input. The neighboor ID stands
- * for the ID of the <div> container next to it (it is used to display the list properly).
+ * It adds the rune autocomplete widget to the specified {container}. There should be a <div> container next to the input one.
  * Position fix : https://stackoverflow.com/questions/28285813/style-jquery-autocomplete-in-a-bootstrap-input-field
  * 
  * Example :
  * <div class="form-group">
  *      <input id="rune-searching" class="form-control" placeholder="Sélectionnez la rune">
- *      <div id="container-rune-searching"></div>
+ *      <div></div>
  * </div>
  * 
- * In this example, we need to call attachRuneCompleteWidget($("#rune-searching"), "#container-rune-searching").
+ * In this example, we need to call attachRuneCompleteWidget($("#rune-searching")).
  * 
  * @param {container} container the input,
- * @param {string} neighboor_id the neighboor id.
  */
-function attachRuneCompleteWidget(container, neighboor_id){
+var counter = 1;
+function attachRuneCompleteWidget(container){
+    neighboor_id = "widget-attachment-" + counter;
+    counter ++;
+
+    container.next().attr("id", neighboor_id)
+    container.next().css("display", "block")
+    container.next().css("position", "relative")
+
+    neighboor_id = "#" + neighboor_id
+
     container.runecomplete({
         delay: 0,
         source : runes,
