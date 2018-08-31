@@ -12,6 +12,8 @@ $(document).ready(function() {
     createRuneCompleteWidget();
     attachRuneCompleteWidget($("#rune-removed"));
     attachRuneCompleteWidget($("#rune-added"));
+    attachRuneCompleteWidget($("#runes-to-add"));
+    attachRuneCompleteWidget($("#rune-to-remove"));
 
     // Sidebar toggler
     addSideBarTrigger($(".hamburger"))

@@ -108,30 +108,92 @@
                         <div class="header">
                             <img src="images/dofus_forgemagie-logo.png" alt="">
                         </div>
-                        <h1><i class="fas fa-briefcase"></i> En construction</h1>
                         <p>Outil pour calculer le pui en 2 clics pour en déduire les runes à passer.</p>
 
                         <div class="card">
-                            <div class="card-header lighten-1 white-text">Calculer PUI</div>
+                            <div class="card-header lighten-1 white-text"><i class="fas fa-magic"></i> Calculer PUI</div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <h4 class="card-title">Calculer PUI</h4>
-                                        <!-- <p class="card-text">blabla</p> -->
+                                        <!-- Rune qui a sauté -->
+                                        <h4 class="card-title">Rune qui a sauté</h4>
+                                        <p class="card-subtext">J'ai perdu un PA après avoir passé une rune Do.</p>
                                         <div class="form-group">
-                                            <input id="rune-removed" class="form-control" placeholder="Sélectionnez la rune">
+                                            <input id="rune-removed" class="form-control" placeholder="Sélectionnez la rune qui a sauté">
                                             <div></div>
                                         </div>
                                         <div class="form-group">
-                                            <input id="rune-added" class="form-control" placeholder="Sélectionnez la rune">
+                                            <input id="rune-added" class="form-control" placeholder="Sélectionnez la rune qui a fait sauté l'autre">
                                             <div></div>
                                         </div>
-                                        <button type="button" class="btn btn-default">Default</button>
+                                        <button type="button" class="btn btn-default">Calculer PUI</button>
+                                        <!-- /Rune qui a sauté -->
+                                        <br><br>
+                                        <!-- Retirer une rune au pui -->
+                                        <h4 class="card-title">Retirer une rune au pui</h4>
+                                        <p class="card-subtext">J'ai 50 de pui, je passe une rune pa vi, il me reste 47 de pui.</p>
+                                        <div class="form-group">
+                                            <input id="rune-to-remove" class="form-control" placeholder="Sélectionnez la rune à passer grâce au pui">
+                                            <div></div>
+                                        </div>
+                                        <button type="button" class="btn btn-default">Retirer</button>
+                                        <!-- /Retirer une rune au pui -->
+                                        <br><br>
+                                        <!-- Nombre de runes à passer -->
+                                        <h4 class="card-title">Nombre de runes à passer</h4>
+                                        <p class="card-subtext">J'ai 50 de pui, je veux savoir combien de rune ré per air je peux passer.</p>
+                                        <div class="form-group">
+                                            <input id="runes-to-add" class="form-control" placeholder="Sélectionnez la rune à passer grâce au pui">
+                                            <div></div>
+                                        </div>
+                                        <button type="button" class="btn btn-default">Combien de runes ?</button>
+                                        <!-- /Nombre de runes à passer -->
                                     </div>
-                                    <div class="col-lg-6">
-                                        LE PUI SERA AFFICHE LA UNE FOIS QUE J'AURAI COMMENCE VUE.JS
+                                    <div class="col-lg-6 pui-card">
+                                        <!-- Pui total -->
+                                        <h4 class="card-title">Pui restant :</h4>
+                                        <h3 id="pui-value" class="card-title">0</h4>
+                                        <button id="plus-btn" type="button" class="btn btn-success">+</button>
+                                        <button id="minus-btn" type="button" class="btn btn-danger">-</button>
+                                        <!-- /Pui total -->
+                                        <br><br><br><br> <!-- eheheh -->
+                                        <!-- Dernière rune retirée -->
+                                        <h4 class="card-title">Dernière rune retirée :</h4>
+                                        <p>
+                                            <span id="rune-remove-name">Rune Age</span><img src="images/runes/Rune Age (1).png" alt="">
+                                        </p>
+                                        <!-- /Dernière rune retirée -->
+                                        <br><br><br><br> <!-- eheheh -->
+                                        <!-- Nombre de runes à passer -->
+                                        <h4 class="card-title">Nombre de runes :</h4>
+                                        <p>
+                                            <span id="rune-to-add-number">0x</span> <span id="rune-to-add-name">Rune Age</span><img src="images/runes/Rune Age (1).png" alt="">
+                                        </p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-header text-white bg-info"><i class="fas fa-question-circle"></i> Aide</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Guide de forgemagie</h4>
+                                <p class="card-text">
+                                    Je ne vais pas vous expliquer la forgemagie ici, ce qui est assez long pour entrer dans les détails. Voici <a href=" https://www.eclypsia.com/fr/dofus/guides/dofus-guide-forgemagie-21664">un lien</a> (eclypsia.com) vers un très bon guide.
+                                </p>
+                                <h5 class="card-title">Comment utiliser l'outil</h4>
+                                <p class="card-text">
+                                    Tout d'abord, il faut définir le PUI. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puis indiquez la rune qui a sauté, et la rune qui a permis cela.
+                                    <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUI, et ainsi donner 90 - 3 = 87.</i>
+                                    <br><br>
+                                    
+                                    Maintenant que vous avez le PUI, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUI une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au pui"</b>.
+                                    <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le pui passera de 87 à 78.</i>
+                                    <br><br>
+                                    
+                                    Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUI. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
+                                    <br><i>Par exemple, vous avez 78 de PUI, vous voulez faire un exo % air, vous allez pouvoir calculer le nombre de runes ré per air que vous pouvez passer, donc ici, 13, et il vous restera tout pile 0 de PUI.</i>
+                                </p>
                             </div>
                         </div>
                     </div>

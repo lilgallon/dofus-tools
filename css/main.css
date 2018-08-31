@@ -17,6 +17,36 @@ td{
   margin: 10px 10px;
 }
 
+/* Pui */
+
+.pui-card{
+  text-align: center;
+  vertical-align : middle;
+  height: 100%;
+}
+
+.pui-card h3{
+  margin: 20px;
+}
+
+.pui-card span{
+  font-size: 17px;
+}
+
+.card-subtext{
+  font-size: 10px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.card-text{
+  text-align: justify;
+}
+
+.card-title{
+  margin-bottom: 5px;
+}
+
 /* Spoiler style */
 
 .spoiler {
