@@ -32,7 +32,7 @@ function createRuneCompleteWidget(){
         // It changes the way items are written to add the icon
         _renderItemData(ul, item){
             var result = this._super(ul, item);
-            result.html("<img src=\"" + item.icon + "\"></img>" + item.label)
+            result.html("<img src=\"" + item.icon + "\"></img>" + item.label + " (" + item.weight + " pui)");
             return result;
         }
     });
