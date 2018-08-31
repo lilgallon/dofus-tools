@@ -1,3 +1,5 @@
+# Used to create a JS variable containing all the runes
+
 import os
 from pathlib import Path
 
@@ -8,13 +10,13 @@ for rune in runes:
     rune_name = os.path.basename(rune).replace("_", " ").replace(".png", "")
     
     category = "simple"
-    if "rune pa" in rune_name:
-        category = "pa"
-    elif "rune ra" in rune_name:
-        category = "ra"
+    if "Rune Pa" in rune_name:
+        category = "Pa"
+    elif "Rune Ra" in rune_name:
+        category = "Ra"
 
     line = '{ label: "' + rune_name + \
            '", category: "Runes de type ' + category + \
-           '", icon: "images/runes/' + category + "/" + os.path.basename(rune) + '"},'
+           '", icon: "images/runes/' + os.path.basename(rune) + '"},'
 
     print(line)
