@@ -27,11 +27,22 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
+  overflow-x: hidden;
   background: #000;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+#sidebar-wrapper .credits{
+  position: absolute;
+  color: #999999;
+  bottom: 110px;
+  border-top: 1px solid #404040;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 #wrapper.toggled #sidebar-wrapper {

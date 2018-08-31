@@ -8,6 +8,15 @@ td{
   width: 100px;
 }
 
+.header img{
+  width: 300px;
+}
+
+.header{
+  text-align: center;
+  margin: 10px 10px;
+}
+
 /* Autocomplete style */
 
 #container-rune-searching{
