@@ -65,6 +65,21 @@ $(document).ready(function() {
         }
     })
 
+    $("#substract-pui").on("click", function(){
+        if($(this).hasClass("btn-primary")){
+            // Update last rune removed
+            var rune_name = $("#rune-to-remove").val();
+            $("#last-rune-removed-name").html(rune_name);
+            $("#last-rune-removed-image").attr("src", findIcon(rune_name));
+
+            // Update pui
+            var old_pui = pui;
+            var rune_pui = findPui(rune_name);
+            pui -= rune_pui;
+            $("#pui-value").html("<span>" + old_pui + " - " + rune_pui + " = </span>" + pui);
+        }
+    })
+
     // "Nombre de runes à passer"
     $("#runes-to-add").change(function(){
         updateInputImage($(this));

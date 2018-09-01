@@ -17,6 +17,18 @@ td{
   margin: 10px 10px;
 }
 
+#last-rune-removed-name{
+  margin-left: 5px;
+}
+
+#last-rune-removed-image{
+  padding-bottom: 5px;
+}
+
+#last-rune-removed{
+  padding-top: 10px;
+}
+
 /* Pui */
 
 .pui-card{
