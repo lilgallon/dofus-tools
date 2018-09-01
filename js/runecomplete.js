@@ -65,7 +65,23 @@ function attachRuneCompleteWidget(container){
 
     container.runecomplete({
         delay: 0,
-        source : runes,
-        appendTo : neighboor_id
+        source: runes,
+        appendTo: neighboor_id,
+        minLength: 0,
+        change: function(event, ui){
+            // Here goes the validation code
+            if(ui.item == null){
+                // It means that the item wasn't selected from the menu
+                container.removeClass("is-valid")
+                container.addClass("is-invalid")
+            }else{
+                // It means that the item was selected from the menu, so it's okay
+                container.addClass("is-valid")
+                container.removeClass("is-invalid")
+            }
+        }
     });
+    container.on("click", function(){
+        container.runecomplete("search", "");
+    })
 }
