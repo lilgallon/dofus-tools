@@ -27,8 +27,16 @@ $(document).ready(function() {
         updateButtonPui()
     });
 
-});
+    $("#calculate-pui").on("click", function(){
+        if($(this).hasClass("btn-primary")){
+            var rune_removed_pui = findPui($("#rune-removed").val());
+            var rune_added_pui = findPui($("#rune-added").val());
+            var diff = rune_removed_pui - rune_added_pui;
+            $("#pui-value").html("<span>" + rune_removed_pui + " - " + rune_added_pui + " = </span>" + diff);
+        }
+    })
 
+});
 
 function updateButtonPui(){
     if($("#rune-added").hasClass("is-valid") && $("#rune-removed").hasClass("is-valid")){
@@ -36,4 +44,18 @@ function updateButtonPui(){
     }else{
         ($("#calculate-pui")).removeClass("btn-primary");
     }
+}
+
+/**
+ * It finds the pui of the rune.
+ * @param {*} rune_name rune name.
+ */
+function findPui(rune_name){
+    for(var i=0; i < runes.length; i ++){
+        rune = runes[i];
+        if(rune.label == rune_name){
+            return rune.weight;
+        }
+    }
+    return 0;
 }

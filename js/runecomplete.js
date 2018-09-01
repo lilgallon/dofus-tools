@@ -120,7 +120,7 @@ function attachRuneCompleteWidget(container){
 
 
 function autocorrectContainer(container){
-    autocorr = autocorrect(container.val(), 3);
+    autocorr = autocorrect(container.val(), 2);
 
     if(autocorr.success){
         container.addClass("is-valid");
