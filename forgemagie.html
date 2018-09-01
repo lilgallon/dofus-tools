@@ -109,7 +109,7 @@
                             <img src="images/dofus_forgemagie-logo.png" alt="">
                         </div>
                         <p>Outil pour calculer le pui en rapidement sans se prendre la tête.</p>
-                        <p class="text-danger"><i class="fas fa-briefcase"></i> Page très récente. Il se peut qu'il y ait quelques petits bugs.</p>
+                        <!--<p class="text-danger"><i class="fas fa-briefcase"></i> Page très récente. Il se peut qu'il y ait quelques petits bugs.</p>-->
 
                         <div class="card">
                             <div class="card-header lighten-1 white-text"><i class="fas fa-magic"></i> Calculer PUI</div>
@@ -178,26 +178,59 @@
                             </div>
                         </div>
                         <br>
-                        <div class="card">
-                            <div class="card-header text-white bg-info"><i class="fas fa-question-circle"></i> Aide</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Guide de forgemagie</h4>
-                                <p class="card-text">
-                                    Je ne vais pas vous expliquer la forgemagie ici, ce qui est assez long pour entrer dans les détails. Voici <a href=" https://www.eclypsia.com/fr/dofus/guides/dofus-guide-forgemagie-21664">un lien</a> (eclypsia.com) vers un très bon guide.
-                                </p>
-                                <h5 class="card-title">Comment utiliser l'outil</h4>
-                                <p class="card-text">
-                                    Tout d'abord, il faut définir le PUI. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puis indiquez la rune qui a sauté, et la rune qui a permis cela.
-                                    <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUI, et ainsi donner 90 - 3 = 87.</i>
-                                    <br><br>
-                                    
-                                    Maintenant que vous avez le PUI, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUI une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au pui"</b>.
-                                    <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le pui passera de 87 à 78.</i>
-                                    <br><br>
-                                    
-                                    Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUI. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
-                                    <br><i>Par exemple, vous avez 78 de PUI, vous voulez faire un exo % air, vous allez pouvoir calculer le nombre de runes ré per air que vous pouvez passer, donc ici, 13, et il vous restera tout pile 0 de PUI.</i>
-                                </p>
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header bg-info">
+                                    <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseOne">
+                                        <i class="fas fa-question-circle"></i> Aide
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Guide de forgemagie</h4>
+                                        <p class="card-text">
+                                            Je ne vais pas vous expliquer la forgemagie ici, ce qui est assez long pour entrer dans les détails. Voici <a href=" https://www.eclypsia.com/fr/dofus/guides/dofus-guide-forgemagie-21664">un lien</a> (eclypsia.com) vers un très bon guide.
+                                        </p>
+                                        <h5 class="card-title">Comment utiliser l'outil</h4>
+                                        <p class="card-text">
+                                            Tout d'abord, il faut définir le PUI. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puis indiquez la rune qui a sauté, et la rune qui a permis cela.
+                                            <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUI, et ainsi donner 90 - 3 = 87.</i>
+                                            <br><br>
+                                            
+                                            Maintenant que vous avez le PUI, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUI une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au pui"</b>.
+                                            <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le pui passera de 87 à 78.</i>
+                                            <br><br>
+                                            
+                                            Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUI. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
+                                            <br><i>Par exemple, vous avez 78 de PUI, vous voulez faire un exo % air, vous allez pouvoir calculer le nombre de runes ré per air que vous pouvez passer, donc ici, 13, et il vous restera tout pile 0 de PUI.</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                                <div class="card-header bg-warning">
+                                    <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseTwo">
+                                        <i class="fas fa-code-branch"></i> Changelog
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p class="card-text"><i class="fas fa-bug"></i> Vous avez trouvé un bug ? Rendez vous sur le <a href="https://github.com/N3ROO/dofus-tools/issues">répertoire git</a> pour le signaler ! :)</p>
+                                        <h5 class="card-title">Version 0.1 (01/09/18)</h4>
+                                        <p class="card-text">
+                                            <ul>
+                                                <li>Création d'une liste déroulante automatique avec icones et poids,</li>
+                                                <li>Ajout de commandes tel que <code>entrer</code> pour séléctionner un item dans la liste,</li>
+                                                <li>Création d'un système d'auto-correction pour faciliter la saisie des champs,</li>
+                                                <li>Création d'un système de validation des champs avant le traitement,</li>
+                                                <li>Création outil "Rune qui a sauté",</li>
+                                                <li>Création outil "Retirer une rune au pui",</li>
+                                                <li>Création outil "Nombre de runes à passer".</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

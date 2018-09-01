@@ -29,6 +29,10 @@ td{
   padding-bottom: 5px;
 }
 
+.card-text{
+  text-align: justify;
+}
+
 /* Pui */
 
 .pui-card{
