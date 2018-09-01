@@ -72,8 +72,18 @@ function attachRuneCompleteWidget(container){
             // Here goes the validation code
             if(ui.item == null){
                 // It means that the item wasn't selected from the menu
-                container.removeClass("is-valid")
-                container.addClass("is-invalid")
+
+                // We will autocorrect the input
+                autocorr = autocorrect(container.val(), 3);
+
+                if(autocorr.success){
+                    container.addClass("is-valid");
+                    container.removeClass("is-invalid");
+                    container.val(autocorr.val);
+                }else{
+                    container.removeClass("is-valid");
+                    container.addClass("is-invalid");
+                }
             }else{
                 // It means that the item was selected from the menu, so it's okay
                 container.addClass("is-valid")
@@ -84,4 +94,82 @@ function attachRuneCompleteWidget(container){
     container.on("click", function(){
         container.runecomplete("search", "");
     })
+}
+
+
+/**
+ * It will autocorrect the value if it is close enough to an existing one (according to score).
+ * @param {*} value the value to autocorrect,
+ * @param {*} max_gap the max gap with an actual value.
+ */
+function autocorrect(value, max_gap){
+    var min_gap_found = 1000;
+    var closest_rune = "undefined";
+
+    for(var i=0; i < runes.length ; i++){
+        var rune = runes[i];
+        var gap = compareStrings(refactoStr(rune.label), refactoStr(value));
+        if(gap < min_gap_found){
+            min_gap_found = gap;
+            closest_rune = rune.label;
+        }
+    }
+
+    if(min_gap_found <= max_gap){
+        return {
+            val : closest_rune,
+            success : true
+        };
+    }else{
+        return {
+            val : value,
+            success : false
+        };
+    }
+}
+
+function refactoStr(str){
+    str = str.toLowerCase();
+    str = str.replace(/\s+/g, '');
+    // We don't care if it is written "rune" or not since every word of the dic contains "rune" in it
+    str = str.replace("rune", "");
+    str = str.replace(/é+/g, "e");
+    // remove everything that is not a letter from a to z
+    str = str.replace(/[^a-z]/g, "")
+    return str;
+}
+
+/**
+ * It compare two strings by returning a number that represent the character difference between these two.
+ * The returned value is an absolute one.
+ * @param {*} str1
+ * @param {*} str2
+ */
+function compareStrings(str1, str2){
+    var str1_occ = getLettersOcc(str1);
+    var str2_occ = getLettersOcc(str2);
+
+    diff = 0;
+    for(var i=0 ; i < 26; i++){
+        diff += Math.abs(str1_occ[i] - str2_occ[i]);
+    }
+
+    return diff;
+}
+
+/**
+ * It retruns an array containing the occurence of each letters from a to z.
+ * @param {*} str string to analyse.
+ */
+function getLettersOcc(str){
+    var occ = Array(26).fill(0);
+    for(var i=0; i < str.length; i++){
+        var char_code = str.charCodeAt(i) - 97;
+        if(char_code < 0 || char_code > 26){
+            console.log("[getLettersOcc/Warning] character " + str.charAt(i) + " is to recognized. It will be ignored");
+        }else{
+            occ[char_code] ++;
+        }
+    }
+    return occ;
 }
