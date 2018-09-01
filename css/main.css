@@ -71,27 +71,6 @@ input.form-control-bg{
   background-size: 30px 30px;
 }
 
-/* Spoiler style */
-
-.spoiler {
-  border: 1px solid #808080;
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.spoiler-toggle {
-  cursor: default;
-  padding: 2px;
-  font-size: 12px;
-  color: #808080;
-}
-
-.spoiler-text{
-  margin-left: 5px;
-  font-size: 12px;
-}
-
 /* Autocomplete style */
 
 .ui-autocomplete {
