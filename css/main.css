@@ -52,6 +52,7 @@ td{
 input.form-control-bg{
   background-repeat: no-repeat;
   background-position: left;
+  background-size: 30px 30px;
 }
 
 /* Spoiler style */

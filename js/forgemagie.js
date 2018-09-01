@@ -16,8 +16,10 @@ $(document).ready(function() {
     attachRuneCompleteWidget($("#runes-to-add"));
     attachRuneCompleteWidget($("#rune-to-remove"));
 
+
     // Sidebar toggler
     addSideBarTrigger($(".hamburger"))
+
 
     // "Rune qui a sauté"
     $("#rune-removed").change(function(){
@@ -39,6 +41,7 @@ $(document).ready(function() {
         }
     })
 
+
     // Pui counter
     $("#minus-btn").on("click", function(){
         if(pui > 0){
@@ -50,6 +53,26 @@ $(document).ready(function() {
     $("#plus-btn").on("click", function(){
         pui ++;
         $("#pui-value").html(pui);
+    })
+
+    // "Retirer une rune au pui"
+    $("#rune-to-remove").change(function(){
+        updateInputImage($(this));
+        if($(this).hasClass("is-valid")){
+            $("#substract-pui").addClass("btn-primary");
+        }else{
+            $("#substract-pui").removeClass("btn-primary");
+        }
+    })
+
+    // "Nombre de runes à passer"
+    $("#runes-to-add").change(function(){
+        updateInputImage($(this));
+        if($(this).hasClass("is-valid")){
+            $("#how-many-runes").addClass("btn-primary");
+        }else{
+            $("#how-many-runes").removeClass("btn-primary");
+        }
     })
 
 });
@@ -64,7 +87,7 @@ function updateButtonPui(){
 
 /**
  * It finds the pui of the rune.
- * @param {*} rune_name rune name.
+ * @param {string} rune_name rune name.
  */
 function findPui(rune_name){
     for(var i=0; i < runes.length; i ++){
@@ -94,6 +117,6 @@ function updateInputImage(container){
     container.css("background-image", "");
     if(icon != ""){
         container.css("background-image", "url('" + icon + "')");
-        container.css("padding-left", "40px");
+        container.css("padding-left", "30px");
     }
 }
