@@ -37,7 +37,7 @@ $(document).ready(function() {
             var rune_removed_pui = findPui($("#rune-removed").val());
             var rune_added_pui = findPui($("#rune-added").val());
             pui = rune_removed_pui - rune_added_pui;
-            $("#pui-value").html("<span>" + rune_removed_pui + " - " + rune_added_pui + " = </span>" + diff);
+            $("#pui-value").html("<span>" + rune_removed_pui + " - " + rune_added_pui + " = </span>" + pui);
         }
     })
 
@@ -87,6 +87,24 @@ $(document).ready(function() {
             $("#how-many-runes").addClass("btn-primary");
         }else{
             $("#how-many-runes").removeClass("btn-primary");
+        }
+    })
+
+    $("#how-many-runes").on("click", function(){
+        if($(this).hasClass("btn-primary")){
+            var rune_name = $("#runes-to-add").val();
+            $("#rune-to-add-name").html(rune_name);
+            $("#rune-to-add-image").attr("src", findIcon(rune_name));
+
+            var rune_pui = findPui(rune_name);
+            var number = Math.floor(pui / rune_pui);
+            $('#rune-to-add-number').html(number + "x");
+
+            if(pui%rune_pui != 0){
+                $("#rune-to-add-comments").html("Il restera " + pui%rune_pui + " de pui.");
+            }else{
+                $("#rune-to-add-comments").html("");
+            }
         }
     })
 
