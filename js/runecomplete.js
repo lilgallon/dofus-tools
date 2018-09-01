@@ -73,7 +73,6 @@ function attachRuneCompleteWidget(container){
             // Here goes the validation code
             if(ui.item == null){
                 // It means that the item wasn't selected from the menu
-
                 // We will autocorrect the input
                 autocorrectContainer(container);
             }else{
@@ -88,12 +87,19 @@ function attachRuneCompleteWidget(container){
         container.runecomplete("search", "");
     })
 
-     container.keydown(function(event){
+    container.keydown(function(event){
         if(event.keyCode == 13) {
             container.runecomplete("close");
             autocorrectContainer(container);
         }
-     });
+    });
+
+    container.on('input', function() { 
+        if(container.val() == ""){
+            container.removeClass("is-valid");
+            container.addClass("is-invalid");
+        }
+    });
 }
 
 function autocorrectContainer(container){
@@ -116,6 +122,13 @@ function autocorrectContainer(container){
  * @param {*} max_gap the max gap with an actual value.
  */
 function autocorrect(value, max_gap){
+    if(value == ""){
+        return {
+            val : value,
+            success : false
+        };
+    }
+
     var min_gap_found = 1000;
     var closest_rune = "undefined";
 
