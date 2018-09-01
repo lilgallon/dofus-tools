@@ -81,11 +81,10 @@ function attachRuneCompleteWidget(container){
                 container.addClass("is-valid")
                 container.removeClass("is-invalid")
             }
+            container.change(); // force change event to be called
         },
         focus: function(event, ui){
             hasFocused = true;
-            console.log("focus");
-            
         }
     });
 
@@ -103,6 +102,7 @@ function attachRuneCompleteWidget(container){
                 rune = rune.split("(")[0];
                 rune = rune.substring(0, rune.length - 1);
                 container.val(rune);
+                container.change(); // force change event to be called
                 container.runecomplete("close");
             }
 

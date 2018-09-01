@@ -17,4 +17,23 @@ $(document).ready(function() {
 
     // Sidebar toggler
     addSideBarTrigger($(".hamburger"))
+
+    // "Rune qui a sauté"
+    $("#rune-removed").change(function(){
+        updateButtonPui()
+    });
+
+    $("#rune-added").change(function(){
+        updateButtonPui()
+    });
+
 });
+
+
+function updateButtonPui(){
+    if($("#rune-added").hasClass("is-valid") && $("#rune-removed").hasClass("is-valid")){
+        ($("#calculate-pui")).addClass("btn-primary");
+    }else{
+        ($("#calculate-pui")).removeClass("btn-primary");
+    }
+}

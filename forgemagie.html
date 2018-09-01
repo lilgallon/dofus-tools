@@ -39,7 +39,7 @@
 
     <!-- JQuery UI -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
 
     <!-- include javascript -->
     <script type="text/javascript" src="js/runes.js"></script>
@@ -127,7 +127,7 @@
                                             <input id="rune-added" class="form-control" placeholder="Sélectionnez la rune qui a fait sauté l'autre">
                                             <div></div>
                                         </div>
-                                        <button type="button" class="btn btn-default">Calculer PUI</button>
+                                        <button id="calculate-pui" type="button" class="btn">Calculer PUI</button>
                                         <!-- /Rune qui a sauté -->
                                         <br><br>
                                         <!-- Retirer une rune au pui -->
@@ -137,7 +137,7 @@
                                             <input id="rune-to-remove" class="form-control" placeholder="Sélectionnez la rune à passer grâce au pui">
                                             <div></div>
                                         </div>
-                                        <button type="button" class="btn btn-default">Retirer</button>
+                                        <button id="substract-pui" type="button" class="btn btn-default">Retirer</button>
                                         <!-- /Retirer une rune au pui -->
                                         <br><br>
                                         <!-- Nombre de runes à passer -->
@@ -147,7 +147,7 @@
                                             <input id="runes-to-add" class="form-control" placeholder="Sélectionnez la rune à passer grâce au pui">
                                             <div></div>
                                         </div>
-                                        <button type="button" class="btn btn-default">Combien de runes ?</button>
+                                        <button id="how-many-runes" type="button" class="btn btn-default">Combien de runes ?</button>
                                         <!-- /Nombre de runes à passer -->
                                     </div>
                                     <div class="col-lg-6 pui-card">
