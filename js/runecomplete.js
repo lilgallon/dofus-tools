@@ -52,6 +52,7 @@ function createRuneCompleteWidget(){
  * 
  * @param {container} container the input,
  */
+var hasFocused = false;
 var counter = 1;
 function attachRuneCompleteWidget(container){
     neighboor_id = "widget-attachment-" + counter;
@@ -80,6 +81,11 @@ function attachRuneCompleteWidget(container){
                 container.addClass("is-valid")
                 container.removeClass("is-invalid")
             }
+        },
+        focus: function(event, ui){
+            hasFocused = true;
+            console.log("focus");
+            
         }
     });
 
@@ -89,8 +95,18 @@ function attachRuneCompleteWidget(container){
 
     container.keydown(function(event){
         if(event.keyCode == 13) {
-            container.runecomplete("close");
-            autocorrectContainer(container);
+            // Since autoFocus: True doesn't work (wtf ?), we need to do the auto focus here
+            // If no element is focused, then we will take the first item
+            if(!hasFocused){
+                var rune = container.runecomplete("widget").find("li").next().html();
+                rune = rune.split(">")[1];
+                rune = rune.split("(")[0];
+                rune = rune.substring(0, rune.length - 1);
+                container.val(rune);
+                container.runecomplete("close");
+            }
+
+            hasFocused = false;
         }
     });
 
@@ -101,6 +117,7 @@ function attachRuneCompleteWidget(container){
         }
     });
 }
+
 
 function autocorrectContainer(container){
     autocorr = autocorrect(container.val(), 3);
