@@ -68,22 +68,14 @@ function attachRuneCompleteWidget(container){
         source: runes,
         appendTo: neighboor_id,
         minLength: 0,
+        autoFocus: true,
         change: function(event, ui){
             // Here goes the validation code
             if(ui.item == null){
                 // It means that the item wasn't selected from the menu
 
                 // We will autocorrect the input
-                autocorr = autocorrect(container.val(), 3);
-
-                if(autocorr.success){
-                    container.addClass("is-valid");
-                    container.removeClass("is-invalid");
-                    container.val(autocorr.val);
-                }else{
-                    container.removeClass("is-valid");
-                    container.addClass("is-invalid");
-                }
+                autocorrectContainer(container);
             }else{
                 // It means that the item was selected from the menu, so it's okay
                 container.addClass("is-valid")
@@ -91,9 +83,30 @@ function attachRuneCompleteWidget(container){
             }
         }
     });
+
     container.on("click", function(){
         container.runecomplete("search", "");
     })
+
+     container.keydown(function(event){
+        if(event.keyCode == 13) {
+            container.runecomplete("close");
+            autocorrectContainer(container);
+        }
+     });
+}
+
+function autocorrectContainer(container){
+    autocorr = autocorrect(container.val(), 3);
+
+    if(autocorr.success){
+        container.addClass("is-valid");
+        container.removeClass("is-invalid");
+        container.val(autocorr.val);
+    }else{
+        container.removeClass("is-valid");
+        container.addClass("is-invalid");
+    }
 }
 
 
