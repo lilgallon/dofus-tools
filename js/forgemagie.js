@@ -20,11 +20,13 @@ $(document).ready(function() {
 
     // "Rune qui a sauté"
     $("#rune-removed").change(function(){
-        updateButtonPui()
+        updateButtonPui();
+        updateInputImage($(this));
     });
 
     $("#rune-added").change(function(){
-        updateButtonPui()
+        updateButtonPui();
+        updateInputImage($(this));
     });
 
     $("#calculate-pui").on("click", function(){
@@ -58,4 +60,26 @@ function findPui(rune_name){
         }
     }
     return 0;
+}
+
+function findIcon(rune_name){
+    for(var i=0; i < runes.length; i ++){
+        var rune = runes[i];
+        if(rune.label == rune_name){
+            return rune.icon;
+        }
+    }
+    return "";
+}
+
+function updateInputImage(container){
+    var rune = container.val();
+    icon = findIcon(rune);
+
+    container.css("padding-left", "4px");
+    container.css("background-image", "");
+    if(icon != ""){
+        container.css("background-image", "url('" + icon + "')");
+        container.css("padding-left", "40px");
+    }
 }

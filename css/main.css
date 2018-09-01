@@ -47,6 +47,13 @@ td{
   margin-bottom: 5px;
 }
 
+/* input image */
+
+input.form-control-bg{
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 /* Spoiler style */
 
 .spoiler {
