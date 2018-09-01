@@ -6,6 +6,7 @@
  * - sidebar.js
  */
 
+var pui = 0;
 $(document).ready(function() {
 
     // Rune auto complete list
@@ -33,9 +34,22 @@ $(document).ready(function() {
         if($(this).hasClass("btn-primary")){
             var rune_removed_pui = findPui($("#rune-removed").val());
             var rune_added_pui = findPui($("#rune-added").val());
-            var diff = rune_removed_pui - rune_added_pui;
+            pui = rune_removed_pui - rune_added_pui;
             $("#pui-value").html("<span>" + rune_removed_pui + " - " + rune_added_pui + " = </span>" + diff);
         }
+    })
+
+    // Pui counter
+    $("#minus-btn").on("click", function(){
+        if(pui > 0){
+            pui --;
+            $("#pui-value").html(pui);
+        }
+    })
+
+    $("#plus-btn").on("click", function(){
+        pui ++;
+        $("#pui-value").html(pui);
     })
 
 });
