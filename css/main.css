@@ -33,19 +33,19 @@ td{
   text-align: justify;
 }
 
-/* Pui */
+/* Puit */
 
-.pui-card{
+.puit-card{
   text-align: center;
   vertical-align : middle;
   height: 100%;
 }
 
-.pui-card h3{
+.puit-card h3{
   margin: 20px;
 }
 
-.pui-card span{
+.puit-card span{
   font-size: 17px;
 }
 

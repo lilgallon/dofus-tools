@@ -60,7 +60,7 @@ def download_image(source, destination):
 def get_rune_weight(rune_name):
     runes_weight = [
         [1, ["Fo", "Ine", "Cha", "Age", "Ini", "Vi"]],
-        [2, ["Pui", "Ré Terre", "Ré Feu", "Ré Eau", "Ré Air", "Ré Neutre", "Ré Pou", "Ré Cri", "Pi Per"]],
+        [2, ["Puit", "Ré Terre", "Ré Feu", "Ré Eau", "Ré Air", "Ré Neutre", "Ré Pou", "Ré Cri", "Pi Per"]],
         [2.5, ["Pod"]],
         [3, ["Sa", "Prospe"]],
         [4, ["Tac", "Fui"]],

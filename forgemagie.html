@@ -13,7 +13,7 @@
           content="Calculateur pour la forgemagie Dofus.">
     <meta name="distribution" content="global">
     <meta name="identifier-url" content="https://n3roo.github.io/Dofus-Forgemagie">
-    <meta name="keywords" content="dofus, forgemagie, pui, poids">
+    <meta name="keywords" content="dofus, forgemagie, puit, poids">
     <meta name="publisher" content="Lilian Gallon">
 
     <title>Calculateur de forgemagie</title>
@@ -82,7 +82,7 @@
                     </li>
                     <li>
                         <a href="https://n3roo.github.io/">
-                            <i class="fas fa-heart"></i> Réalisé par N3ROO
+                            <i class="fas fa-heart"></i> Réalisé par Skaterider
                         </a>
                     </li>
                 </ul>
@@ -107,7 +107,7 @@
                         <div class="header">
                             <img src="images/dofus_forgemagie-logo.png" alt="">
                         </div>
-                        <p>Outil pour calculer le pui en rapidement sans se prendre la tête.</p>
+                        <p>Outil pour calculer le puit en rapidement sans se prendre la tête.</p>
                         <!--<p class="text-danger"><i class="fas fa-briefcase"></i> Page très récente. Il se peut qu'il y ait quelques petits bugs.</p>-->
 
                         <div class="card">
@@ -126,36 +126,36 @@
                                             <input id="rune-added" class="form-control form-control-bg" placeholder="Sélectionnez la rune qui a fait sauté l'autre">
                                             <div></div>
                                         </div>
-                                        <button id="calculate-pui" type="button" class="btn">Calculer PUI</button>
+                                        <button id="calculate-puit" type="button" class="btn">Calculer PUI</button>
                                         <!-- /Rune qui a sauté -->
                                         <br><br>
-                                        <!-- Retirer une rune au pui -->
-                                        <h4 class="card-title">Retirer une rune au pui</h4>
-                                        <p class="card-subtext">J'ai 50 de pui, je passe une rune pa vi, il me reste 47 de pui.</p>
+                                        <!-- Retirer une rune au puit -->
+                                        <h4 class="card-title">Retirer une rune au puit</h4>
+                                        <p class="card-subtext">J'ai 50 de puit, je passe une rune pa vi, il me reste 47 de puit.</p>
                                         <div class="form-group">
-                                            <input id="rune-to-remove" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au pui">
+                                            <input id="rune-to-remove" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
                                             <div></div>
                                         </div>
-                                        <button id="substract-pui" type="button" class="btn">Retirer</button>
-                                        <!-- /Retirer une rune au pui -->
+                                        <button id="substract-puit" type="button" class="btn">Retirer</button>
+                                        <!-- /Retirer une rune au puit -->
                                         <br><br>
                                         <!-- Nombre de runes à passer -->
                                         <h4 class="card-title">Nombre de runes à passer</h4>
-                                        <p class="card-subtext">J'ai 50 de pui, je veux savoir combien de rune ré per air je peux passer.</p>
+                                        <p class="card-subtext">J'ai 50 de puit, je veux savoir combien de rune ré per air je peux passer.</p>
                                         <div class="form-group">
-                                            <input id="runes-to-add" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au pui">
+                                            <input id="runes-to-add" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
                                             <div></div>
                                         </div>
                                         <button id="how-many-runes" type="button" class="btn">Combien de runes ?</button>
                                         <!-- /Nombre de runes à passer -->
                                     </div>
-                                    <div class="col-lg-6 pui-card">
-                                        <!-- Pui total -->
-                                        <h4 class="card-title">Pui restant :</h4>
-                                        <h3 id="pui-value" class="card-title">0</h4>
+                                    <div class="col-lg-6 puit-card">
+                                        <!-- Puit total -->
+                                        <h4 class="card-title">Puit restant :</h4>
+                                        <h3 id="puit-value" class="card-title">0</h4>
                                             <button id="minus-btn" type="button" class="btn btn-primary btn-sm">-</button>
                                         <button id="plus-btn" type="button" class="btn btn-primary btn-sm">+</button>
-                                        <!-- /Pui total -->
+                                        <!-- /Puit total -->
                                         <br><br><br><br> <!-- eheheh -->
                                         <!-- Dernière rune retirée -->
                                         <h4 class="card-title">Dernière rune retirée :</h4>
@@ -192,12 +192,12 @@
                                         </p>
                                         <h5 class="card-title">Comment utiliser l'outil</h4>
                                         <p class="card-text">
-                                            Tout d'abord, il faut définir le PUI. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puis indiquez la rune qui a sauté, et la rune qui a permis cela.
+                                            Tout d'abord, il faut définir le PUI. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puits indiquez la rune qui a sauté, et la rune qui a permis cela.
                                             <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUI, et ainsi donner 90 - 3 = 87.</i>
                                             <br><br>
                                             
-                                            Maintenant que vous avez le PUI, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUI une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au pui"</b>.
-                                            <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le pui passera de 87 à 78.</i>
+                                            Maintenant que vous avez le PUI, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUI une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au puit"</b>.
+                                            <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le puit passera de 87 à 78.</i>
                                             <br><br>
                                             
                                             Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUI. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
@@ -216,6 +216,12 @@
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
                                         <p class="card-text"><i class="fas fa-bug"></i> Vous avez trouvé un bug ? Rendez vous sur le <a href="https://github.com/N3ROO/dofus-tools/issues">répertoire git</a> pour le signaler ! :)</p>
+                                        <h5 class="card-title">Version 0.2 (27/11/20)</h4>
+                                        <p class="card-text">
+                                            <ul>
+                                                <li>Renommé "Pui" en "Puit"</li>
+                                            </ul>
+                                        </p>
                                         <h5 class="card-title">Version 0.1 (01/09/18)</h4>
                                         <p class="card-text">
                                             <ul>
@@ -224,7 +230,7 @@
                                                 <li>Création d'un système d'auto-correction pour faciliter la saisie des champs,</li>
                                                 <li>Création d'un système de validation des champs avant le traitement,</li>
                                                 <li>Création outil "Rune qui a sauté",</li>
-                                                <li>Création outil "Retirer une rune au pui",</li>
+                                                <li>Création outil "Retirer une rune au puit",</li>
                                                 <li>Création outil "Nombre de runes à passer".</li>
                                             </ul>
                                         </p>

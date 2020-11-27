@@ -6,7 +6,7 @@
  * - sidebar.js
  */
 
-var pui = 0;
+var puit = 0;
 $(document).ready(function() {
 
     // Rune auto complete list
@@ -23,60 +23,60 @@ $(document).ready(function() {
 
     // "Rune qui a sauté"
     $("#rune-removed").change(function(){
-        updateButtonPui();
+        updateButtonPuit();
         updateInputImage($(this));
     });
 
     $("#rune-added").change(function(){
-        updateButtonPui();
+        updateButtonPuit();
         updateInputImage($(this));
     });
 
-    $("#calculate-pui").on("click", function(){
+    $("#calculate-puit").on("click", function(){
         if($(this).hasClass("btn-primary")){
-            var rune_removed_pui = findPui($("#rune-removed").val());
-            var rune_added_pui = findPui($("#rune-added").val());
-            pui = rune_removed_pui - rune_added_pui;
-            $("#pui-value").html("<span>" + rune_removed_pui + " - " + rune_added_pui + " = </span>" + pui);
+            var rune_removed_puit = findPuit($("#rune-removed").val());
+            var rune_added_puit = findPuit($("#rune-added").val());
+            puit = rune_removed_puit - rune_added_puit;
+            $("#puit-value").html("<span>" + rune_removed_puit + " - " + rune_added_puit + " = </span>" + puit);
         }
     })
 
 
-    // Pui counter
+    // Puit counter
     $("#minus-btn").on("click", function(){
-        if(pui > 0){
-            pui --;
-            $("#pui-value").html(pui);
+        if(puit > 0){
+            puit --;
+            $("#puit-value").html(puit);
         }
     })
 
     $("#plus-btn").on("click", function(){
-        pui ++;
-        $("#pui-value").html(pui);
+        puit ++;
+        $("#puit-value").html(puit);
     })
 
-    // "Retirer une rune au pui"
+    // "Retirer une rune au puit"
     $("#rune-to-remove").change(function(){
         updateInputImage($(this));
         if($(this).hasClass("is-valid")){
-            $("#substract-pui").addClass("btn-primary");
+            $("#substract-puit").addClass("btn-primary");
         }else{
-            $("#substract-pui").removeClass("btn-primary");
+            $("#substract-puit").removeClass("btn-primary");
         }
     })
 
-    $("#substract-pui").on("click", function(){
+    $("#substract-puit").on("click", function(){
         if($(this).hasClass("btn-primary")){
             // Update last rune removed
             var rune_name = $("#rune-to-remove").val();
             $("#last-rune-removed-name").html(rune_name);
             $("#last-rune-removed-image").attr("src", findIcon(rune_name));
 
-            // Update pui
-            var old_pui = pui;
-            var rune_pui = findPui(rune_name);
-            pui -= rune_pui;
-            $("#pui-value").html("<span>" + old_pui + " - " + rune_pui + " = </span>" + pui);
+            // Update puit
+            var old_puit = puit;
+            var rune_puit = findPuit(rune_name);
+            puit -= rune_puit;
+            $("#puit-value").html("<span>" + old_puit + " - " + rune_puit + " = </span>" + puit);
         }
     })
 
@@ -96,12 +96,12 @@ $(document).ready(function() {
             $("#rune-to-add-name").html(rune_name);
             $("#rune-to-add-image").attr("src", findIcon(rune_name));
 
-            var rune_pui = findPui(rune_name);
-            var number = Math.floor(pui / rune_pui);
+            var rune_puit = findPuit(rune_name);
+            var number = Math.floor(puit / rune_puit);
             $('#rune-to-add-number').html(number + "x");
 
-            if(pui%rune_pui != 0){
-                $("#rune-to-add-comments").html("Il restera " + pui%rune_pui + " de pui.");
+            if(puit%rune_puit != 0){
+                $("#rune-to-add-comments").html("Il restera " + puit%rune_puit + " de puit.");
             }else{
                 $("#rune-to-add-comments").html("");
             }
@@ -110,19 +110,19 @@ $(document).ready(function() {
 
 });
 
-function updateButtonPui(){
+function updateButtonPuit(){
     if($("#rune-added").hasClass("is-valid") && $("#rune-removed").hasClass("is-valid")){
-        ($("#calculate-pui")).addClass("btn-primary");
+        ($("#calculate-puit")).addClass("btn-primary");
     }else{
-        ($("#calculate-pui")).removeClass("btn-primary");
+        ($("#calculate-puit")).removeClass("btn-primary");
     }
 }
 
 /**
- * It finds the pui of the rune.
+ * It finds the puit of the rune.
  * @param {string} rune_name rune name.
  */
-function findPui(rune_name){
+function findPuit(rune_name){
     for(var i=0; i < runes.length; i ++){
         rune = runes[i];
         if(rune.label == rune_name){
