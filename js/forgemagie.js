@@ -69,61 +69,38 @@ $(document).ready(function() {
         }
     })
 
-
     // Puit counter
     $("#minus-btn").on("click", function(){
-        if(puit > 0){
-            puit --;
-            $("#puit-value").html(puit);
+        substract(1);
+    });
 
-            var currentHistory = $("#history").html();
-            $("#history").html(
-                `
-                <div class="card mb-3" style="margin-bottom: 5px !important;">
-                    <div class="row g-0">
-                        <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
-                            Retiré 1 puit
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                </small>
-                            </p>
-                        </div>
-                        <div class="col-md-4" style="margin-top: 13px; text-align: right;">
-                            Total: <b>${puit}</b>
-                        </div>
-                    </div>
-                </div>
-                ` + currentHistory
-            );
-        }
-    })
+    $("#minus-btn-2").on("click", function(){
+        substract(2);
+    });
+
+    $("#minus-btn-3").on("click", function(){
+        substract(3);
+    });
+
+    $("#minus-btn-5").on("click", function(){
+        substract(5);
+    });
 
     $("#plus-btn").on("click", function(){
-        puit ++;
-        $("#puit-value").html(puit);
+        add(1);
+    });
 
-        var currentHistory = $("#history").html();
-        $("#history").html(
-            `
-            <div class="card mb-3" style="margin-bottom: 5px !important;">
-                <div class="row g-0">
-                    <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
-                        Ajouté 1 puit
-                        <p class="card-text">
-                            <small class="text-muted">
-                                à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                            </small>
-                        </p>
-                    </div>
-                    <div class="col-md-4" style="margin-top: 13px; text-align: right;">
-                        Total: <b>${puit}</b>
-                    </div>
-                </div>
-            </div>
-            ` + currentHistory
-        );
-    })
+    $("#plus-btn-2").on("click", function(){
+        add(2);
+    });
+
+    $("#plus-btn-3").on("click", function(){
+        add(3);
+    });
+
+    $("#plus-btn-5").on("click", function(){
+        add(5);
+    });
 
     // "Retirer une rune au puit"
     $("#rune-to-remove").change(function(){
@@ -204,6 +181,60 @@ $(document).ready(function() {
     })
 
 });
+
+function substract(decrement) {
+    if(puit - decrement >= 0){
+        puit -= decrement;
+        $("#puit-value").html(puit);
+
+        var currentHistory = $("#history").html();
+        $("#history").html(
+            `
+            <div class="card mb-3" style="margin-bottom: 5px !important;">
+                <div class="row g-0">
+                    <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
+                        Retiré ${decrement} puit
+                        <p class="card-text">
+                            <small class="text-muted">
+                                à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </small>
+                        </p>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 13px; text-align: right;">
+                        Total: <b>${puit}</b>
+                    </div>
+                </div>
+            </div>
+            ` + currentHistory
+        );
+    }
+}
+
+function add(increment) {
+    puit += increment;
+    $("#puit-value").html(puit);
+
+    let currentHistory = $("#history").html();
+    $("#history").html(
+        `
+        <div class="card mb-3" style="margin-bottom: 5px !important;">
+            <div class="row g-0">
+                <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
+                    Ajouté ${increment} puit
+                    <p class="card-text">
+                        <small class="text-muted">
+                            à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </small>
+                    </p>
+                </div>
+                <div class="col-md-4" style="margin-top: 13px; text-align: right;">
+                    Total: <b>${puit}</b>
+                </div>
+            </div>
+        </div>
+        ` + currentHistory
+    );
+}
 
 function updateButtonPuit(){
     if($("#rune-added").hasClass("is-valid") && $("#rune-removed").hasClass("is-valid")){
