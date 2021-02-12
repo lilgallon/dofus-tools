@@ -3,7 +3,6 @@
  * Scripts needed (in order) :
  * - runes.js
  * - runecomplete.js
- * - sidebar.js
  */
 
 var puit = 0;
@@ -15,10 +14,6 @@ $(document).ready(function() {
     attachRuneCompleteWidget($("#rune-added"));
     attachRuneCompleteWidget($("#runes-to-add"));
     attachRuneCompleteWidget($("#rune-to-remove"));
-
-
-    // Sidebar toggler
-    addSideBarTrigger($(".hamburger"))
 
 
     // "Rune qui a sauté"
@@ -34,26 +29,78 @@ $(document).ready(function() {
 
     $("#calculate-puit").on("click", function(){
         if($(this).hasClass("btn-primary")){
-            var rune_removed_puit = findPuit($("#rune-removed").val());
-            var rune_added_puit = findPuit($("#rune-added").val());
+            var rune_removed = $("#rune-removed").val();
+            var rune_added = $("#rune-added").val();
+
+            var rune_removed_puit = findPuit(rune_removed);
+            var rune_added_puit = findPuit(rune_added);
             puit = rune_removed_puit - rune_added_puit;
             $("#puit-value").html("<span>" + rune_removed_puit + " - " + rune_added_puit + " = </span>" + puit);
+            
+            var rune_removed_icon = findIcon($("#rune-removed").val());
+            var rune_added_icon = findIcon($("#rune-added").val());
+
+            var currentHistory = $("#history").html();
+            $("#history").html(
+                `
+                <div class="card mb-3" style="margin-bottom: 5px !important;">
+                    <div class="row g-0">
+                        <div class="col-md-1" style="margin-top: 5px;">
+                            <img src="${rune_removed_icon}" width="40px">
+                        </div>
+                        <div class="col-md-1" style="margin-top: 5px;">
+                            <img src="${rune_added_icon}" width="40px">
+                        </div>
+                        <div class="col-md-5" style="margin-left: 10px; padding-right: 0 !important;">
+                            ${puit} puit généré
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </small>
+                            </p>
+                        </div>
+                        <div class="col-lg-4" style="margin-top: 13px; text-align: right;">
+                            Total: <b>${puit}</b>
+                        </div>
+                    </div>
+                </div>
+                ` + currentHistory
+            );
         }
     })
-
 
     // Puit counter
     $("#minus-btn").on("click", function(){
-        if(puit > 0){
-            puit --;
-            $("#puit-value").html(puit);
-        }
-    })
+        substract(1);
+    });
+
+    $("#minus-btn-2").on("click", function(){
+        substract(2);
+    });
+
+    $("#minus-btn-3").on("click", function(){
+        substract(3);
+    });
+
+    $("#minus-btn-5").on("click", function(){
+        substract(5);
+    });
 
     $("#plus-btn").on("click", function(){
-        puit ++;
-        $("#puit-value").html(puit);
-    })
+        add(1);
+    });
+
+    $("#plus-btn-2").on("click", function(){
+        add(2);
+    });
+
+    $("#plus-btn-3").on("click", function(){
+        add(3);
+    });
+
+    $("#plus-btn-5").on("click", function(){
+        add(5);
+    });
 
     // "Retirer une rune au puit"
     $("#rune-to-remove").change(function(){
@@ -69,14 +116,39 @@ $(document).ready(function() {
         if($(this).hasClass("btn-primary")){
             // Update last rune removed
             var rune_name = $("#rune-to-remove").val();
-            $("#last-rune-removed-name").html(rune_name);
-            $("#last-rune-removed-image").attr("src", findIcon(rune_name));
 
             // Update puit
             var old_puit = puit;
             var rune_puit = findPuit(rune_name);
             puit -= rune_puit;
             $("#puit-value").html("<span>" + old_puit + " - " + rune_puit + " = </span>" + puit);
+
+            $("#last-rune-removed-name").html(rune_name + " (" + rune_puit + ")");
+            $("#last-rune-removed-image").attr("src", findIcon(rune_name));
+
+            var currentHistory = $("#history").html();
+            $("#history").html(
+                `
+                <div class="card mb-3" style="margin-bottom: 5px !important;">
+                    <div class="row g-0">
+                        <div class="col-md-1" style="margin-top: 5px;">
+                            <img src="${findIcon(rune_name)}" width="40px">
+                        </div>
+                        <div class="col-md-6" style="margin-left: 10px; padding-right: 0 !important;">
+                            ${rune_puit} puit retiré
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} (${rune_name})
+                                </small>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="margin-top: 13px; text-align: right;">
+                            Total: <b>${puit}</b>
+                        </div>
+                    </div>
+                </div>
+                ` + currentHistory
+            );
         }
     })
 
@@ -109,6 +181,60 @@ $(document).ready(function() {
     })
 
 });
+
+function substract(decrement) {
+    if(puit - decrement >= 0){
+        puit -= decrement;
+        $("#puit-value").html(puit);
+
+        var currentHistory = $("#history").html();
+        $("#history").html(
+            `
+            <div class="card mb-3" style="margin-bottom: 5px !important;">
+                <div class="row g-0">
+                    <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
+                        Retiré ${decrement} puit
+                        <p class="card-text">
+                            <small class="text-muted">
+                                à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </small>
+                        </p>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 13px; text-align: right;">
+                        Total: <b>${puit}</b>
+                    </div>
+                </div>
+            </div>
+            ` + currentHistory
+        );
+    }
+}
+
+function add(increment) {
+    puit += increment;
+    $("#puit-value").html(puit);
+
+    let currentHistory = $("#history").html();
+    $("#history").html(
+        `
+        <div class="card mb-3" style="margin-bottom: 5px !important;">
+            <div class="row g-0">
+                <div class="col-md-7" style="margin-left: 10px; padding-right: 0 !important;">
+                    Ajouté ${increment} puit
+                    <p class="card-text">
+                        <small class="text-muted">
+                            à ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </small>
+                    </p>
+                </div>
+                <div class="col-md-4" style="margin-top: 13px; text-align: right;">
+                    Total: <b>${puit}</b>
+                </div>
+            </div>
+        </div>
+        ` + currentHistory
+    );
+}
 
 function updateButtonPuit(){
     if($("#rune-added").hasClass("is-valid") && $("#rune-removed").hasClass("is-valid")){

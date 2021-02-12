@@ -24,8 +24,6 @@
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/main.css">
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="css/hamburger.css" rel="stylesheet">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome-all.min.css">
@@ -38,214 +36,220 @@
 
     <!-- JQuery UI -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
     <!-- include javascript -->
     <script type="text/javascript" src="js/runes.js"></script>
     <script type="text/javascript" src="js/runecomplete.js"></script>
-    <script type="text/javascript" src="js/sidebar.js"></script>
     <script type="text/javascript" src="js/forgemagie.js"></script>
 </head>
 
 <body>
     <!-- Wrapper -->
-    <div id="wrapper" class="toggled">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="index.html">
-                        Outils pour dofus
-                    </a>
-                </li>
-                <li class="selected">
-                    <a href="forgemagie.html"><i class="fas fa-magic"></i> Forgemagie <span class="text-warning">v0.1</span></a>
-                </li>
-                <li>
-                    <a href="brisage.html"><i class="fas fa-gavel"></i> Brisage d'items</a>
-                </li>
-                <li>
-                    <a href=""><i class="fas fa-shield-alt"></i> Blason guilde HD</a>
-                </li>
-            </ul>
-            <div class="credits">
-                <ul class="sidebar-nav">
-                    <li>
-                        <a href="https://github.com/N3ROO/dofus-tools">
-                            <i class="fab fa-github"></i> Contribuer au projet
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <!-- Navbar content -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                Dofus Tools
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="forgemagie.html">
+                            <i class="fas fa-magic"></i> Forgemagie <span class="text-warning">v1.0.0</span>
                         </a>
                     </li>
-                    <li>
-                        <a>
-                            <i class="fas fa-bolt"></i> Optimisé pour USH
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://n3roo.github.io/">
-                            <i class="fas fa-heart"></i> Réalisé par Skaterider
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" target="_blank" href="https://github.com/N3ROO/dofus-tools">
+                            <i class="fab fa-github"></i> Participer au développement</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <!-- /Sidebar -->
+    </nav>
 
-        <!-- Page content -->
-        <div id="page-content-wrapper">
-            <!-- Sidebar toggle button -->
-            <button type="button" class="hamburger is-open" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-                <span class="hamb-middle"></span>
-                <span class="hamb-bottom"></span>
-            </button>
-            <!-- /Sidebar toggle button-->
-
-            <!-- Content -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="header">
-                            <img src="images/dofus_forgemagie-logo.png" alt="">
+        <!-- Content -->
+        <div class="container">
+            <div class="row" style="margin-bottom: 100px;">
+                <div class="col-lg-12">
+                    <div class="header">
+                        <img src="images/dofus_forgemagie-logo.png" alt="">
+                    </div>
+                    <hr>
+                    <p>
+                        Outil pour calculer le puit en rapidement sans se prendre la tête.
+                        <b>Mis à jour récemment! (13 Février)</b>
+                    </p>
+                    
+                    <div class="card">
+                        <div class="card-header lighten-1 white-text"><i class="fas fa-magic"></i> Calculer PUIT</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <!-- Rune qui a sauté -->
+                                    <h4 class="card-title">Rune qui a sauté</h4>
+                                    <p class="card-subtext">J'ai perdu un PA après avoir passé une rune Do.</p>
+                                    <div class="form-group">
+                                        <input id="rune-removed" class="form-control form-control-bg" placeholder="Sélectionnez la rune qui a sauté">
+                                        <div></div>
+                                    </div>
+                                    <div class="form-group" style="margin-top: 10px;">
+                                        <input id="rune-added" class="form-control form-control-bg" placeholder="Sélectionnez la rune qui a fait sauté l'autre">
+                                        <div></div>
+                                    </div>
+                                    <button id="calculate-puit" type="button" class="btn btn-disabled">
+                                        Calculer PUIT
+                                    </button>
+                                    <!-- /Rune qui a sauté -->
+                                    <br><br>
+                                    <!-- Retirer une rune au puit -->
+                                    <h4 class="card-title">Retirer une rune au puit</h4>
+                                    <p class="card-subtext">J'ai 50 de puit, je passe une rune pa vi, il me reste 47 de puit.</p>
+                                    <div class="form-group">
+                                        <input id="rune-to-remove" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
+                                        <div></div>
+                                    </div>
+                                    <button id="substract-puit" type="button" class="btn btn-disabled">
+                                        Retirer
+                                    </button>
+                                    <!-- /Retirer une rune au puit -->
+                                    <br><br>
+                                    <!-- Nombre de runes à passer -->
+                                    <h4 class="card-title">Nombre de runes à passer</h4>
+                                    <p class="card-subtext">J'ai 50 de puit, je veux savoir combien de rune ré per air je peux passer.</p>
+                                    <div class="form-group">
+                                        <input id="runes-to-add" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
+                                        <div></div>
+                                    </div>
+                                    <button id="how-many-runes" type="button" class="btn btn-disabled">Combien de runes ?</button>
+                                    <!-- /Nombre de runes à passer -->
+                                </div>
+                                <div class="col-lg-4 puit-card">
+                                    <!-- Puit total -->
+                                    <h4 class="card-title">Puit restant</h4>
+                                    <h3 id="puit-value" class="card-title">0</h4>
+                                    <div style="margin-bottom: 5px;">
+                                        <button id="minus-btn" type="button" class="btn btn-danger btn-sm">- 1</button>
+                                        <button id="minus-btn-2" type="button" class="btn btn-danger btn-sm">- 2</button>
+                                        <button id="minus-btn-3" type="button" class="btn btn-danger btn-sm">- 3</button>
+                                        <button id="minus-btn-5" type="button" class="btn btn-danger btn-sm">- 5</button>
+                                    </div>
+                                    <div>
+                                        <button id="plus-btn" type="button" class="btn btn-success btn-sm">+1</button>
+                                        <button id="plus-btn-2" type="button" class="btn btn-success btn-sm">+2</button>
+                                        <button id="plus-btn-3" type="button" class="btn btn-success btn-sm">+3</button>
+                                        <button id="plus-btn-5" type="button" class="btn btn-success btn-sm">+5</button>
+                                    </div>
+                                    
+                                    <!-- /Puit total -->
+                                    <br><br><br><br> <!-- eheheh -->
+                                    <!-- Dernière rune retirée -->
+                                    <h4 class="card-title">Dernière rune retirée</h4>
+                                    <br>
+                                    <div>
+                                        <img id="last-rune-removed-image" src="" alt=""><span id="last-rune-removed-name">-</span>
+                                    </div>
+                                    <!-- /Dernière rune retirée -->
+                                    <br><br><br><br> <!-- eheheh -->
+                                    <!-- Nombre de runes à passer -->
+                                    <h4 class="card-title">Nombre de runes</h4>
+                                    <br>
+                                    <div>
+                                        <span id="rune-to-add-number"></span><img id="rune-to-add-image" src="" alt=""><span id="rune-to-add-name">-</span>
+                                        <p id="rune-to-add-comments"></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h4 class="card-title">Historique</h4>
+                                    <br>
+                                    <div style="max-height: 450px; overflow-y: auto; overflow-x: hidden;" id="history">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p>Outil pour calculer le puit en rapidement sans se prendre la tête.</p>
-                        <!--<p class="text-danger"><i class="fas fa-briefcase"></i> Page très récente. Il se peut qu'il y ait quelques petits bugs.</p>-->
-
+                    </div>
+                    <br>
+                    <div id="accordion">
                         <div class="card">
-                            <div class="card-header lighten-1 white-text"><i class="fas fa-magic"></i> Calculer PUIT</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <!-- Rune qui a sauté -->
-                                        <h4 class="card-title">Rune qui a sauté</h4>
-                                        <p class="card-subtext">J'ai perdu un PA après avoir passé une rune Do.</p>
-                                        <div class="form-group">
-                                            <input id="rune-removed" class="form-control form-control-bg" placeholder="Sélectionnez la rune qui a sauté">
-                                            <div></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input id="rune-added" class="form-control form-control-bg" placeholder="Sélectionnez la rune qui a fait sauté l'autre">
-                                            <div></div>
-                                        </div>
-                                        <button id="calculate-puit" type="button" class="btn">Calculer PUIT</button>
-                                        <!-- /Rune qui a sauté -->
+                            <div class="card-header bg-info">
+                                <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseOne">
+                                    <i class="fas fa-question-circle"></i> Aide
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h5 class="card-title">Guide de forgemagie</h4>
+                                    <p class="card-text">
+                                        Je ne vais pas vous expliquer la forgemagie ici, ce qui est assez long pour entrer dans les détails. Voici <a href=" https://www.eclypsia.com/fr/dofus/guides/dofus-guide-forgemagie-21664">un lien</a> (eclypsia.com) vers un très bon guide.
+                                    </p>
+                                    <h5 class="card-title">Comment utiliser l'outil</h4>
+                                    <p class="card-text">
+                                        Tout d'abord, il faut définir le PUIT. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puits indiquez la rune qui a sauté, et la rune qui a permis cela.
+                                        <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUIT, et ainsi donner 90 - 3 = 87.</i>
                                         <br><br>
-                                        <!-- Retirer une rune au puit -->
-                                        <h4 class="card-title">Retirer une rune au puit</h4>
-                                        <p class="card-subtext">J'ai 50 de puit, je passe une rune pa vi, il me reste 47 de puit.</p>
-                                        <div class="form-group">
-                                            <input id="rune-to-remove" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
-                                            <div></div>
-                                        </div>
-                                        <button id="substract-puit" type="button" class="btn">Retirer</button>
-                                        <!-- /Retirer une rune au puit -->
+                                        
+                                        Maintenant que vous avez le PUIT, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUIT une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au puit"</b>.
+                                        <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le puit passera de 87 à 78.</i>
                                         <br><br>
-                                        <!-- Nombre de runes à passer -->
-                                        <h4 class="card-title">Nombre de runes à passer</h4>
-                                        <p class="card-subtext">J'ai 50 de puit, je veux savoir combien de rune ré per air je peux passer.</p>
-                                        <div class="form-group">
-                                            <input id="runes-to-add" class="form-control form-control-bg" placeholder="Sélectionnez la rune à passer grâce au puit">
-                                            <div></div>
-                                        </div>
-                                        <button id="how-many-runes" type="button" class="btn">Combien de runes ?</button>
-                                        <!-- /Nombre de runes à passer -->
-                                    </div>
-                                    <div class="col-lg-6 puit-card">
-                                        <!-- Puit total -->
-                                        <h4 class="card-title">Puit restant :</h4>
-                                        <h3 id="puit-value" class="card-title">0</h4>
-                                            <button id="minus-btn" type="button" class="btn btn-primary btn-sm">-</button>
-                                        <button id="plus-btn" type="button" class="btn btn-primary btn-sm">+</button>
-                                        <!-- /Puit total -->
-                                        <br><br><br><br> <!-- eheheh -->
-                                        <!-- Dernière rune retirée -->
-                                        <h4 class="card-title">Dernière rune retirée :</h4>
-                                        <br>
-                                        <div>
-                                            <img id="last-rune-removed-image" src="" alt=""><span id="last-rune-removed-name">-</span>
-                                        </div>
-                                        <!-- /Dernière rune retirée -->
-                                        <br><br><br><br> <!-- eheheh -->
-                                        <!-- Nombre de runes à passer -->
-                                        <h4 class="card-title">Nombre de runes :</h4>
-                                        <br>
-                                        <div>
-                                            <span id="rune-to-add-number"></span><img id="rune-to-add-image" src="" alt=""><span id="rune-to-add-name">-</span>
-                                            <p id="rune-to-add-comments"></p>
-                                        </div>
-                                    </div>
+                                        
+                                        Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUIT. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
+                                        <br><i>Par exemple, vous avez 78 de PUIT, vous voulez faire un exo % air, vous allez pouvoir calculer le nombre de runes ré per air que vous pouvez passer, donc ici, 13, et il vous restera tout pile 0 de PUIT.</i>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <div id="accordion">
-                            <div class="card">
-                                <div class="card-header bg-info">
-                                    <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseOne">
-                                        <i class="fas fa-question-circle"></i> Aide
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Guide de forgemagie</h4>
-                                        <p class="card-text">
-                                            Je ne vais pas vous expliquer la forgemagie ici, ce qui est assez long pour entrer dans les détails. Voici <a href=" https://www.eclypsia.com/fr/dofus/guides/dofus-guide-forgemagie-21664">un lien</a> (eclypsia.com) vers un très bon guide.
-                                        </p>
-                                        <h5 class="card-title">Comment utiliser l'outil</h4>
-                                        <p class="card-text">
-                                            Tout d'abord, il faut définir le PUIT. Pour ceci, allez dans la partie <b>"Rune qui a sauté"</b>, puits indiquez la rune qui a sauté, et la rune qui a permis cela.
-                                            <br><i>Par exemple, vous avez fait partir 1 PA avec une rune pa vi. Cela va calculer le PUIT, et ainsi donner 90 - 3 = 87.</i>
-                                            <br><br>
-                                            
-                                            Maintenant que vous avez le PUIT, vous pouvez faire ce que vous faisez d'habitude, c'est-à-dire soustraire au PUIT une rune. Pour cela, vous pouvez utilisez la partie <b>"Retirer une rune au puit"</b>.
-                                            <br><i>Par exemple, vous voulez améliorer le jet en ajoutant une rune pa sa, le puit passera de 87 à 78.</i>
-                                            <br><br>
-                                            
-                                            Si le jet de l'item vous paraît sympathique, vous pouvez calculer le nombre de runes que vous pouvez passer grâce au PUIT. La partie <b>"Nombre de runes à passer"</b> est faite pour ça.
-                                            <br><i>Par exemple, vous avez 78 de PUIT, vous voulez faire un exo % air, vous allez pouvoir calculer le nombre de runes ré per air que vous pouvez passer, donc ici, 13, et il vous restera tout pile 0 de PUIT.</i>
-                                        </p>
-                                    </div>
-                                </div>
+                        <div class="card">
+                            <div class="card-header bg-warning">
+                                <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseTwo">
+                                    <i class="fas fa-code-branch"></i> Changelog
+                                </a>
                             </div>
-                            <br>
-                            <div class="card">
-                                <div class="card-header bg-warning">
-                                    <a style="text-decoration: none;" class="text-white collapsed" data-toggle="collapse" href="#collapseTwo">
-                                        <i class="fas fa-code-branch"></i> Changelog
-                                    </a>
-                                </div>
-                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p class="card-text"><i class="fas fa-bug"></i> Vous avez trouvé un bug ? Rendez vous sur le <a href="https://github.com/N3ROO/dofus-tools/issues">répertoire git</a> pour le signaler ! :)</p>
-                                        <h5 class="card-title">Version 0.2 (27/11/20)</h4>
-                                        <p class="card-text">
-                                            <ul>
-                                                <li>Renommé "Pui" en "Puit"</li>
-                                            </ul>
-                                        </p>
-                                        <h5 class="card-title">Version 0.1 (01/09/18)</h4>
-                                        <p class="card-text">
-                                            <ul>
-                                                <li>Création d'une liste déroulante automatique avec icones et poids,</li>
-                                                <li>Ajout de commandes tel que <code>entrer</code> pour séléctionner un item dans la liste,</li>
-                                                <li>Création d'un système d'auto-correction pour faciliter la saisie des champs,</li>
-                                                <li>Création d'un système de validation des champs avant le traitement,</li>
-                                                <li>Création outil "Rune qui a sauté",</li>
-                                                <li>Création outil "Retirer une rune au puit",</li>
-                                                <li>Création outil "Nombre de runes à passer".</li>
-                                            </ul>
-                                        </p>
-                                    </div>
+                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="card-text"><i class="fas fa-bug"></i> Vous avez trouvé un bug ? Rendez vous sur le <a href="https://github.com/N3ROO/dofus-tools/issues">répertoire git</a> pour le signaler ! :)</p>
+                                    
+                                    <h5 class="card-title">Version 1.0.0 (12/02/21)</h4>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Corrigé icone de la rune Pui</li>
+                                            <li>Ajout de l'historique</li>
+                                            <li>Ajout des boutons +2/+3/+5 et -2/-3/-5</li>
+                                            <li>Résolu le message d'erreur (màj JQueryUI)</li>
+                                        </ul>
+                                    </p>
+
+                                    <h5 class="card-title">Version 0.2 (27/11/20)</h4>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Renommé "Pui" en "Puit"</li>
+                                        </ul>
+                                    </p>
+
+                                    <h5 class="card-title">Version 0.1 (01/09/18)</h4>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Création d'une liste déroulante automatique avec icones et poids,</li>
+                                            <li>Ajout de commandes tel que <code>entrer</code> pour séléctionner un item dans la liste,</li>
+                                            <li>Création d'un système d'auto-correction pour faciliter la saisie des champs,</li>
+                                            <li>Création d'un système de validation des champs avant le traitement,</li>
+                                            <li>Création outil "Rune qui a sauté",</li>
+                                            <li>Création outil "Retirer une rune au puit",</li>
+                                            <li>Création outil "Nombre de runes à passer".</li>
+                                        </ul>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /Content -->
         </div>
-        <!-- /Page content -->
-    </div>
-    <!-- /Wrapper -->
+        <!-- /Content -->
 </body>
 
 </html>

@@ -98,6 +98,14 @@ input.form-control-bg{
   background-color: #DDD;
 }
 
+.ui-menu-item:hover {
+  background-color: #DDD;
+}
+
+.ui-menu-item-wrapper {
+  border: none !important;
+}
+
 .ui-helper-hidden-accessible {
   display: none;
 }
